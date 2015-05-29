@@ -11,7 +11,7 @@ import android.widget.FrameLayout;
 
 import com.android.fm.R;
 import android.widget.NumberPicker;
-import android.widget.NumberPicker.OnChangedListener;
+import android.widget.NumberPicker.OnValueChangeListener;
 
 import java.text.NumberFormat;
 import java.text.DecimalFormat;
@@ -83,10 +83,9 @@ public class FrequencyPicker extends FrameLayout {
         inflater.inflate(R.layout.frequency_picker, this, true);
 
         mMHzPicker = (NumberPicker) findViewById(R.id.mhz);
-        mMHzPicker.setSpeed(100);
 
-        mMHzPicker.setOnChangeListener(new OnChangedListener() {
-            public void onChanged(NumberPicker picker, int oldVal, int newVal) {
+        mMHzPicker.setOnValueChangedListener(new OnValueChangeListener() {
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                 mMhz = newVal;
                 mFrequency = (mMhz * 1000) + (getFrequencyKHz(mKhz, mMin, mStep));
                 validateFrequencyRange();
@@ -97,9 +96,8 @@ public class FrequencyPicker extends FrameLayout {
             }
         });
         mKHzPicker = (NumberPicker) findViewById(R.id.khz);
-        mKHzPicker.setSpeed(100);
-        mKHzPicker.setOnChangeListener(new OnChangedListener() {
-            public void onChanged(NumberPicker picker, int oldVal, int newVal) {
+        mKHzPicker.setOnValueChangedListener(new OnValueChangeListener() {
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                 mKhz = newVal;
                 mFrequency = (mMhz * 1000) + (getFrequencyKHz(mKhz, mMin, mStep));
 
@@ -345,8 +343,12 @@ public class FrequencyPicker extends FrameLayout {
         String[] khzStrings = getKHzStrings(mMin, mStep);
         int khzNumSteps = getKHzCount(mStep);
 
-        mMHzPicker.setRange(mMin / 1000, mMax / 1000);
-        mKHzPicker.setRange(1, khzNumSteps, khzStrings);
+        mMHzPicker.setMinValue(mMin / 1000);
+        mMHzPicker.setMaxValue(mMax / 1000);
+
+        mKHzPicker.setMinValue(1);
+        mKHzPicker.setMaxValue(khzNumSteps);
+        mKHzPicker.setDisplayedValues(khzStrings);
     }
 
     private void updateSpinners() {
@@ -355,10 +357,10 @@ public class FrequencyPicker extends FrameLayout {
         mMhz = (int) (mFrequency / 1000);
         mKhz = getCurrentKHz(mFrequency, mMin, mStep);
         if ((mMin / 1000 <= mMhz) && (mMax / 1000 >= mMhz)) {
-            mMHzPicker.setCurrent(mMhz);
+            mMHzPicker.setValue(mMhz);
         }
         if (mKhz <= khzNumSteps) {
-            mKHzPicker.setCurrent(mKhz);
+            mKHzPicker.setValue(mKhz);
         }
     }
 

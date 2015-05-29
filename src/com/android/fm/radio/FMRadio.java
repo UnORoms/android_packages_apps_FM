@@ -909,8 +909,8 @@ public class FMRadio extends Activity {
                 boolean radioOn = mService.isFmOn();
 
                 // reset volume to avoid a bug that volume will be MAX
-                int vol = AudioSystem.getStreamVolumeIndex(AudioSystem.STREAM_FM);
-                AudioSystem.setStreamVolumeIndex(AudioSystem.STREAM_FM, vol);
+                int vol = AudioSystem.getStreamVolumeIndex(AudioSystem.STREAM_MUSIC, AudioSystem.DEVICE_OUT_FM_TX);
+                AudioSystem.setStreamVolumeIndex(AudioSystem.STREAM_MUSIC, vol, AudioSystem.DEVICE_OUT_FM_TX);
 
                 if (!isPhoneInCall()) {
                     mService.unMute();

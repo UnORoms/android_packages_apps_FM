@@ -16,5 +16,7 @@ LOCAL_CERTIFICATE := platform
 
 include $(BUILD_PACKAGE)
 
+include $(call all-makefiles-under,$(LOCAL_PATH))
+
 endif # TARGET_SIMULATOR
 endif # BOARD_HAVE_FM_RADIO
