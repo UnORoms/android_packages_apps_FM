@@ -29,7 +29,7 @@
 package android.hardware.fmradio;
 
 
-class FmReceiverJNI {
+public class FmReceiverJNI {
 
     static {
         System.loadLibrary("fmjni");
@@ -49,7 +49,7 @@ class FmReceiverJNI {
      * @return The file descriptor of the device
      *
      */
-    static native int acquireFdNative(String path);
+    public static native int acquireFdNative(String path);
 
 
     /**
@@ -77,7 +77,7 @@ class FmReceiverJNI {
      *             {@link #FM_JNI_SUCCESS}
      *             {@link #FM_JNI_FAILURE}
      */
-    static native int closeFdNative(int fd);
+    public static native int closeFdNative(int fd);
 
     /**
      * native method: get frequency

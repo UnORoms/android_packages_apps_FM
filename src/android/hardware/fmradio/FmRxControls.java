@@ -90,20 +90,20 @@ class FmRxControls
     * Turn off FM Rx/Tx
     */
    public void fmOff(int fd){
-      FmReceiverJNI.setControlNative(fd, V4L2_CID_PRIVATE_TAVARUA_STATE, 2 );
+//      FmReceiverJNI.setControlNative(fd, V4L2_CID_PRIVATE_TAVARUA_STATE, 2 );
    }
 
    /*
     * set mute control
     */
    public void muteControl(int fd, boolean on) {
-      if (on)
-      {
-         int err = FmReceiverJNI.setControlNative(fd, V4L2_CID_AUDIO_MUTE, 3 );
-      } else
-      {
-         int err = FmReceiverJNI.setControlNative(fd, V4L2_CID_AUDIO_MUTE, 4 );
-      }
+//      if (on)
+//      {
+//         int err = FmReceiverJNI.setControlNative(fd, V4L2_CID_AUDIO_MUTE, 3 );
+//      } else
+//      {
+//         int err = FmReceiverJNI.setControlNative(fd, V4L2_CID_AUDIO_MUTE, 4 );
+//      }
    }
 
    /*

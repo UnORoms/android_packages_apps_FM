@@ -35,6 +35,22 @@
 
         </activity>
 
+        <activity android:icon="@drawable/ic_launcher_fmradio"
+                  android:name=".MainActivity"
+                  android:label="FMTest"
+                  android:clearTaskOnLaunch="true"
+                  android:launchMode="singleInstance"
+                  android:theme="@android:style/Theme.NoTitleBar"
+                  android:taskAffinity=""
+                  android:configChanges="orientation"
+                >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
 
         <activity android:name=".radio.Settings"
                   android:label="@string/settings_menu">

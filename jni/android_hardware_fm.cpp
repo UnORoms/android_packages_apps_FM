@@ -182,6 +182,8 @@ int hci_w(int reg, int val)
 
     void *p_buf;
 
+    system("chmod 0777 /dev/ttyHS0");
+
     char s1[100] = "btconfig rawcmd 0x3f 0x15 ";
     char stemp[10] = "";
     char starget[100] = "";
@@ -206,7 +208,9 @@ int hci_r(int reg)
 {
     int returnval = 0;
 
-    char s1[100] = "hcitool cmd 0x3f 0x15 ";
+    system("chmod 0777 /dev/ttyHS0");
+
+    char s1[100] = "btconfig rawcmd 0x3f 0x15 ";
     char stemp[10] = "";
     char starget[100] = "";
     char *pstarget = starget;
